@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>View a User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="user" class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>{{ user.first_name }} {{ user.last_name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>{{ user.username }}</ion-item>
+      <ion-item>{{ user.email }}</ion-item>
+      <ion-item>
+        <ion-button [routerLink]="['/user-edit/', user._id]">Edit User</ion-button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

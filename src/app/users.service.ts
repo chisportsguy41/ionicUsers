@@ -11,7 +11,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class AuthService {
+export class UsersService {
   private url: string;
   private baseURL: string;
   private host: string;
@@ -24,19 +24,27 @@ export class AuthService {
     }else{
       this.host = this.l.hostname + ((this.l.port.length>0)?':' + this.l.port:'');
     }
-    this.url = `${this.l.protocol}//${this.host}/api/auth/`;
+    this.url = `${this.l.protocol}//${this.host}/api/users/`;
   }
 
-  register (user: User): Observable<User> {
-    return this.http.post<User>(this.url + 'register', user, httpOptions);
+  getUsers(): Observable<User> {
+    return this.http.get<User>(this.url);
   }
 
-  logIn(user: User): Observable<User> {
-    return this.http.post<User>(this.url + 'login', user, httpOptions);
+  getUser(id:string): Observable<User> {
+    return this.http.get<User>(this.url + id);
   }
 
-  logOut(): any {
-    return this.http.delete<any>(this.url + 'logout');
+  createUser (user: User): Observable<User> {
+    return this.http.post<User>(this.url, user, httpOptions);
+  }
+
+  editUser(user: User): Observable<User> {
+    return this.http.put<User>(this.url, user, httpOptions);
+  }
+
+  deleteUser(id:string): Observable<User> {
+    return this.http.delete<User>(this.url + id);
   }
 
   getRedirect(): string {
