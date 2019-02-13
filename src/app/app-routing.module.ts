@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'users', loadChildren: './users/users.module#UsersPageModule' },
   { path: 'user-view/:id', loadChildren: './user-view/user-view.module#UserViewPageModule' },
   { path: 'user-edit/:id', loadChildren: './user-edit/user-edit.module#UserEditPageModule' },
-  { path: 'user-create', loadChildren: './user-create/user-create.module#UserCreatePageModule' }
+  { path: 'user-create', loadChildren: './user-create/user-create.module#UserCreatePageModule' },
+  { path: 'user-delete/:id', loadChildren: './user-delete/user-delete.module#UserDeletePageModule' }
 ];
 
 @NgModule({

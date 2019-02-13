@@ -22,6 +22,9 @@
       </div>
     </ion-card-content>
   </ion-card>
-  <ion-button [routerLink]="['/user-create']">Add a user</ion-button>
-
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button color="light" [routerLink]="['/user-create']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

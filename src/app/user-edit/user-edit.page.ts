@@ -13,7 +13,6 @@ export class UserEditPage implements OnInit {
   user: User;
   errors: any = {};
   errorMessage: string;
-  private id: string;
 
   constructor(
     private usersService: UsersService,
@@ -22,8 +21,9 @@ export class UserEditPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.getUser(this.id);
+    this.route.params.subscribe((params)=> {
+      this.getUser(params['id']);
+    });
   }
 
   getUser(id:string): void {
@@ -52,7 +52,7 @@ export class UserEditPage implements OnInit {
 
   deleteUser(): void {
     if(confirm("Are you sure you want to delete " + this.user.username + "?")) {
-      this.usersService.deleteUser(this.id).subscribe(
+      this.usersService.deleteUser(this.user._id).subscribe(
         ()=>{this.router.navigate(['/users'])}
       );
     }
@@ -61,7 +61,6 @@ export class UserEditPage implements OnInit {
   onSubmit(): void {
     this.usersService.editUser(this.user).subscribe(
       (response)=>{
-        console.log(response)
         this.response(response)
       }
     );

@@ -15,9 +15,11 @@
     <ion-card-content>
       <ion-item>{{ user.username }}</ion-item>
       <ion-item>{{ user.email }}</ion-item>
-      <ion-item>
-        <ion-button [routerLink]="['/user-edit/', user._id]">Edit User</ion-button>
-      </ion-item>
     </ion-card-content>
   </ion-card>
+  <ion-fab *ngIf="user" vertical="bottom" horizontal="end">
+    <ion-fab-button [routerLink]="['/user-edit/', user._id]">
+      <ion-icon name="create"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

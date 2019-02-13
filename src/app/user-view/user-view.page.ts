@@ -11,7 +11,6 @@ import { User } from '../users';
 })
 export class UserViewPage implements OnInit {
   user: User;
-  private id: string;
 
   constructor(
     private usersService: UsersService,
@@ -20,8 +19,9 @@ export class UserViewPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.getUser(this.id);
+    this.route.params.subscribe(
+      (params)=> {this.getUser(params['id']);
+    });
   }
 
   getUser(id:string): void {

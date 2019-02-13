@@ -11,14 +11,16 @@ import { User } from '../users';
 })
 export class UsersPage implements OnInit {
   users: User;
+  hasLoaded: boolean = false;
 
   constructor(
     private usersService: UsersService,
     private router: Router
-  ) { }
+  ) {  }
 
   ngOnInit() {
     this.getUsers();
+    this.hasLoaded = true;
   }
 
   getUsers(): void {

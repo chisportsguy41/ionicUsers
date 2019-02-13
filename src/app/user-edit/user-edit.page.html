@@ -33,7 +33,10 @@
       </ion-item>
       <ion-button id="submit" expand="full" (click)="onSubmit()">Submit</ion-button>
     </ion-card-content>
-    <ion-button (click)="deleteUser()" color="danger" expand="full">Delete User</ion-button>
   </ion-card>
-
+  <ion-fab *ngIf="user" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="deleteUser()" color="danger">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
