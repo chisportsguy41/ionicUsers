@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user-delete</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Delete User</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-button *ngIf="user" expand="full" (click)="deleteUser()" color="danger">
+    ARE YOU SURE YOU WANT TO DELETE {{ user.first_name }} {{ user.last_name }}?
+  </ion-button>
 
 </ion-content>

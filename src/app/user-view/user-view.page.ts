@@ -24,6 +24,12 @@ export class UserViewPage implements OnInit {
     });
   }
 
+  ionViewWillEnter(): void {
+    this.route.params.subscribe(
+      (params)=> {this.getUser(params['id']);
+    });
+  }
+
   getUser(id:string): void {
     this.usersService.getUser(id).subscribe(
       (response:any)=>{

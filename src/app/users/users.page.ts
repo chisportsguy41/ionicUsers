@@ -23,6 +23,10 @@ export class UsersPage implements OnInit {
     this.hasLoaded = true;
   }
 
+  ionViewWillEnter(): void {
+    this.getUsers();
+  }
+
   getUsers(): void {
     this.usersService.getUsers().subscribe(
       (response:any) =>{

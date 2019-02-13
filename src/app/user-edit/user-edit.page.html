@@ -35,7 +35,7 @@
     </ion-card-content>
   </ion-card>
   <ion-fab *ngIf="user" vertical="bottom" horizontal="end">
-    <ion-fab-button (click)="deleteUser()" color="danger">
+    <ion-fab-button [routerLink]="['/user-delete/', user._id]" color="danger">
       <ion-icon name="trash"></ion-icon>
     </ion-fab-button>
   </ion-fab>

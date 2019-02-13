@@ -26,6 +26,12 @@ export class UserEditPage implements OnInit {
     });
   }
 
+  ionViewWillEnter(): void {
+    this.route.params.subscribe((params)=> {
+      this.getUser(params['id']);
+    });
+  }
+
   getUser(id:string): void {
     this.usersService.getUser(id).subscribe(
       (response:any)=>{
@@ -46,15 +52,7 @@ export class UserEditPage implements OnInit {
     }
 
     if(response.success===true) {
-      this.router.navigate(['/user-view/', response.user._id]);
-    }
-  }
-
-  deleteUser(): void {
-    if(confirm("Are you sure you want to delete " + this.user.username + "?")) {
-      this.usersService.deleteUser(this.user._id).subscribe(
-        ()=>{this.router.navigate(['/users'])}
-      );
+      this.router.navigate(['/user-view', response.user._id]);
     }
   }
 
