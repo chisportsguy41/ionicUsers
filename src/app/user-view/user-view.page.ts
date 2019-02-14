@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { UsersService } from '../users.service';
@@ -9,7 +9,7 @@ import { User } from '../users';
   templateUrl: './user-view.page.html',
   styleUrls: ['./user-view.page.scss'],
 })
-export class UserViewPage implements OnInit {
+export class UserViewPage {
   user: User;
 
   constructor(
@@ -17,12 +17,6 @@ export class UserViewPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) { }
-
-  ngOnInit() {
-    this.route.params.subscribe(
-      (params)=> {this.getUser(params['id']);
-    });
-  }
 
   ionViewWillEnter(): void {
     this.route.params.subscribe(

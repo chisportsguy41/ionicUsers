@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { UsersService } from '../users.service';
@@ -9,7 +9,7 @@ import { User } from '../users';
   templateUrl: './user-edit.page.html',
   styleUrls: ['./user-edit.page.scss'],
 })
-export class UserEditPage implements OnInit {
+export class UserEditPage {
   user: User;
   errors: any = {};
   errorMessage: string;
@@ -19,12 +19,6 @@ export class UserEditPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) { }
-
-  ngOnInit() {
-    this.route.params.subscribe((params)=> {
-      this.getUser(params['id']);
-    });
-  }
 
   ionViewWillEnter(): void {
     this.route.params.subscribe((params)=> {

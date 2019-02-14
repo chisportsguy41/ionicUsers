@@ -40,7 +40,8 @@ export class UserCreatePage implements OnInit {
     }
 
     if(response.success===true) {
-      this.router.navigate(['/user-view/', response.user._id]);
+      this.user = new User();
+      this.router.navigate(['/user-view', response.user._id]);
     }
   }
 

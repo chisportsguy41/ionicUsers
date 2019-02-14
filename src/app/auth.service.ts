@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this.l = window.location;
-    if(this.l.port == '8100'){
+    if(this.l.port >= '8100'){
       this.host = 'localhost:3000';
     }else{
       this.host = this.l.hostname + ((this.l.port.length>0)?':' + this.l.port:'');
