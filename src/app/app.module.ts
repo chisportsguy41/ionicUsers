@@ -10,6 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
+import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './auth.service';
 import { UsersService } from './users.service';
 
@@ -25,6 +27,7 @@ import { UsersService } from './users.service';
   providers: [
     StatusBar,
     SplashScreen,
+    CookieService,
     AuthService,
     UsersService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -7,20 +8,24 @@ import { Router } from '@angular/router';
   templateUrl: './logout.page.html',
   styleUrls: ['./logout.page.scss'],
 })
-export class LogoutPage implements OnInit {
-  errors: Array<any> = [];
+export class LogoutPage {
   errorMessage: string;
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(
+    private router: Router, 
+    private authService: AuthService,
+    private cookieService: CookieService
+  ) { }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.logOut();
   }
  
   logOut(): void {
     this.authService.logOut().subscribe(
-      (response: any) => {
-        window.location.href = this.authService.getRedirect();
+      (response:any) => {
+        this.cookieService.delete('sugar', '/');
+        window.location.href = '/ionicUsers#users';
       }
     );
   }

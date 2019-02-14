@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 
+import { CookieService } from 'ngx-cookie-service';
 import { UsersService } from '../users.service';
 import { User } from '../users';
 
@@ -16,10 +17,14 @@ export class UserCreatePage implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit() {
+    if (this.cookieService.check('sugar')==false) {
+      this.router.navigate(['/login']);
+    }
   }
 
   response(response): void {
