@@ -7,7 +7,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <ion-item *ngIf="!users">
+    <ion-label text-center>
+      <ion-spinner></ion-spinner>
+    </ion-label>
+  </ion-item>
   <ion-card *ngIf="users" class="welcome-card">
     <ion-card-header>
       <ion-card-title>All Users</ion-card-title>
@@ -22,7 +27,7 @@
       </div>
     </ion-card-content>
   </ion-card>
-  <ion-fab vertical="bottom" horizontal="end">
+  <ion-fab vertical="top" horizontal="end">
     <ion-fab-button color="tertiary" [routerLink]="['/user-create']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

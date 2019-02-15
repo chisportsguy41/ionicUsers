@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { LoadingController } from '@ionic/angular';
 import { Router } from "@angular/router";
 
 import { UsersService } from '../users.service';
@@ -16,7 +17,8 @@ export class UsersPage {
   constructor(
     private usersService: UsersService,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    public loadingCtrl: LoadingController
   ) {  }
 
   ionViewWillEnter(): void {

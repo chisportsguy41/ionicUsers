@@ -34,8 +34,8 @@ export class LoginPage implements OnInit {
       for(let i = 0; i < 10; i++) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
       }
-      this.cookieService.set('sugar', text, (1/24), '/');
-      window.location.href = '/ionicUsers#users';
+      this.cookieService.set('sugar', text, (1/24), '/ionicUsers');
+      window.location.href = '/ionicUsers';
     }
   }
 

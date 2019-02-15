@@ -8,6 +8,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-item *ngIf="!user">
+    <ion-label text-center>
+      <ion-spinner></ion-spinner>
+    </ion-label>
+  </ion-item>
   <ion-card *ngIf="user" class="welcome-card">
     <ion-card-header>
       <ion-card-title>Edit {{user.first_name}} {{user.last_name}}</ion-card-title>
@@ -34,7 +39,7 @@
       <ion-button id="submit" expand="full" (click)="onSubmit()">Submit</ion-button>
     </ion-card-content>
   </ion-card>
-  <ion-fab *ngIf="user" vertical="bottom" horizontal="end">
+  <ion-fab *ngIf="user" vertical="top" horizontal="end">
     <ion-fab-button [routerLink]="['/user-delete/', user._id]" color="danger">
       <ion-icon name="trash"></ion-icon>
     </ion-fab-button>

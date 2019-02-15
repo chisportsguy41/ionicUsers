@@ -8,6 +8,11 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-item *ngIf="!user">
+    <ion-label text-center>
+      <ion-spinner></ion-spinner>
+    </ion-label>
+  </ion-item>
   <ion-card *ngIf="user">
     <ion-card-header>
       <ion-card-title>Are you sure you want to delete {{user.first_name}} {{user.last_name}}?</ion-card-title>

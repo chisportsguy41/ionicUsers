@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logout',
@@ -9,10 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./logout.page.scss'],
 })
 export class LogoutPage {
-  errorMessage: string;
 
   constructor(
-    private router: Router, 
     private authService: AuthService,
     private cookieService: CookieService
   ) { }
@@ -24,10 +21,9 @@ export class LogoutPage {
   logOut(): void {
     this.authService.logOut().subscribe(
       (response:any) => {
-        this.cookieService.delete('sugar', '/');
-        window.location.href = '/ionicUsers#users';
+        this.cookieService.delete('sugar', '/ionicUsers');
+        window.location.href = '/ionicUsers';
       }
     );
   }
-
 }
